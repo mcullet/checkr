@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,4 +19,36 @@
     </tbody>
 </table>
 </body>
+
+
+<script>
+
+
+$.ajax({
+    type: 'GET',
+    url: '/loadAccount',
+    success: function(resultData) {
+      populateTable(resultData);
+    }
+  });
+
+
+function populateTable(resultData) {
+
+    var tr;
+    for (var i = 0; i < resultData.length; i++) {
+      tr = $('<tr/>');
+      $.ajax({
+          type: 'GET',
+          url: '/getEtf/' + jsonData.etfs[i].name,
+          success: function(stockPrice) {
+            tr.append("<td>" + jsonData.etfs[i].name + "</td>");
+            tr.append("<td>" + stockPrice + "</td>");
+            tr.append("<td>" + stockPrice - jsonData.etfs[i].boughtAt + "</td>");
+            $('table').append(tr);
+          }
+        });
+    }
+  }
+</script>
 </html>
