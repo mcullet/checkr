@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
 </head>
 <body>
 <table id="etfTable" class="ui celled table">
@@ -36,19 +37,28 @@ $.ajax({
 function populateTable(resultData) {
 
     var tr;
-    for (var i = 0; i < resultData.length; i++) {
-      tr = $('<tr/>');
+    var jsonData;
+    jsonData = JSON.parse(resultData)
+    //console.log(jsonData.etfs[0].name)
+
+    $.each(jsonData.etfs, function(index, data) {
+      console.log(index);
+      console.log(data);
+      console.log(data.name)
+      console.log(data['boughtAt'])
       $.ajax({
           type: 'GET',
-          url: '/getEtf/' + jsonData.etfs[i].name,
+          url: '/getEtf/' + data.name,
           success: function(stockPrice) {
-            tr.append("<td>" + jsonData.etfs[i].name + "</td>");
+            var change = stockPrice - data['boughtAt']
+            tr = $('<tr/>');
+            tr.append("<td>" + data.name + "</td>");
             tr.append("<td>" + stockPrice + "</td>");
-            tr.append("<td>" + stockPrice - jsonData.etfs[i].boughtAt + "</td>");
-            $('table').append(tr);
+            tr.append("<td>" + change + "</td>");
+            $('#etfTable').append(tr);
           }
         });
-    }
+      })
   }
 </script>
 </html>

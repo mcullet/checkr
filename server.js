@@ -79,76 +79,76 @@ var etfs = [{
         "name": "VEA",
         "description": "Weighted average of large stocks from foreign stocks"
     },
-        { 
-        "name" : "SDS", 
-        "description" : "inverse leverage ETF for the S&P 500. -2 times the daily performance of the S&P 500 " 
-    }, 
-     { 
-        "name" : "TQQQ", 
-        "description" : "3X leveraged ETF comprised of weighted NASDAQ top 100 stocks" 
-    }, 
-    { 
-        "name" : "DOG", 
-        "description" : "Inverse exposure into the DOW Jones top 30 " 
-    }, 
-    { 
-        "name" : "SH", 
-        "description" : "Inverse exposure into the S&P 500" 
-    }, 
-    { 
-        "name" : "STZ", 
-        "description" : "Beer, Wine, and Spirits ETF" 
-    }, 
-    { 
-        "name" : "UUP", 
-        "description" : "Futures on the USD relative to world currencies" 
-    }, 
-    { 
-        "name" : "COW", 
-        "description" : "Futures based off of animal livestock" 
-    }, 
-    { 
-        "name" : "GLD", 
-        "description" : "Tracks gold prices by using gold bars hidden away in London vaults" 
-    }, 
-    { 
-        "name" : "USO", 
-        "description" : "Futures based on monthly WTI prices on oil" 
+        {
+        "name" : "SDS",
+        "description" : "inverse leverage ETF for the S&P 500. -2 times the daily performance of the S&P 500 "
     },
-    { 
-        "name" : "RSX", 
-        "description" : "weighted Russian companies based on market cap " 
-    }, 
-    { 
-        "name" : "IEV", 
-        "description" : "weighted 350 largest EU companies" 
-    }, 
-    { 
-        "name" : "FXI", 
-        "description" : "50 largest and most liquid Chinese stocks" 
-    }, 
-    { 
-        "name" : "XLRE", 
-        "description" : "market cap weighted index of real estate based stocks from the S&P 500" 
-    }, 
-    { 
-        "name" : "XLB", 
-        "description" : " market cap weighted index of materials based stocks from the S&P 500" 
-    }, 
-    { 
-        "name" : "XLI", 
-        "description" : " market cap weighted index of industrial based stocks from the S&P 500" 
-    }, 
-    { 
-        "name" : "XLV", 
-        "description" : " market cap weighted index of healthcare based stocks from the S&P 500" 
-    }, 
-    { 
-        "name" : "XLY", 
-        "description" : " market cap weighted index of consumer discretionary stocks like appliances and auto and apparel based stocks from the S&P 500" 
-    }, 
+     {
+        "name" : "TQQQ",
+        "description" : "3X leveraged ETF comprised of weighted NASDAQ top 100 stocks"
+    },
+    {
+        "name" : "DOG",
+        "description" : "Inverse exposure into the DOW Jones top 30 "
+    },
+    {
+        "name" : "SH",
+        "description" : "Inverse exposure into the S&P 500"
+    },
+    {
+        "name" : "STZ",
+        "description" : "Beer, Wine, and Spirits ETF"
+    },
+    {
+        "name" : "UUP",
+        "description" : "Futures on the USD relative to world currencies"
+    },
+    {
+        "name" : "COW",
+        "description" : "Futures based off of animal livestock"
+    },
+    {
+        "name" : "GLD",
+        "description" : "Tracks gold prices by using gold bars hidden away in London vaults"
+    },
+    {
+        "name" : "USO",
+        "description" : "Futures based on monthly WTI prices on oil"
+    },
+    {
+        "name" : "RSX",
+        "description" : "weighted Russian companies based on market cap "
+    },
+    {
+        "name" : "IEV",
+        "description" : "weighted 350 largest EU companies"
+    },
+    {
+        "name" : "FXI",
+        "description" : "50 largest and most liquid Chinese stocks"
+    },
+    {
+        "name" : "XLRE",
+        "description" : "market cap weighted index of real estate based stocks from the S&P 500"
+    },
+    {
+        "name" : "XLB",
+        "description" : " market cap weighted index of materials based stocks from the S&P 500"
+    },
+    {
+        "name" : "XLI",
+        "description" : " market cap weighted index of industrial based stocks from the S&P 500"
+    },
+    {
+        "name" : "XLV",
+        "description" : " market cap weighted index of healthcare based stocks from the S&P 500"
+    },
+    {
+        "name" : "XLY",
+        "description" : " market cap weighted index of consumer discretionary stocks like appliances and auto and apparel based stocks from the S&P 500"
+    },
 
-]    
+]
 
 
 
@@ -157,7 +157,13 @@ app.get('/', function(req, res) {
     res.sendFile('/public/FINRAHackathonHTMLComponent.html', {
   root: __dirname
   });
-}) 
+})
+
+app.get('/myETFs', function(req, res) {
+    res.sendFile('/public/MyETFs.html', {
+  root: __dirname
+  });
+})
 
 app.post('/saveAccount', function(req, res) {
     console.log(req.body)
@@ -178,7 +184,7 @@ app.get('/loadAccount', function(req, res) {
     console.log(data);
     res.send(data);
     });
-    
+
 
 })
 
@@ -200,21 +206,21 @@ app.get('/loadBalance', function(req, res) {
 
     res.send(resultObj);
     });
-    
+
 
 })
 
 app.get('/getEtf/:etf', function(req, res) {
     console.log(req.params.etf)
     var etf = req.params.etf
-    
+
     unirest.get('https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(" ' + etf + '")&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=')
     .end(function (response) {
         //console.log(response.body);
         var price = response.body["query"]["results"]["quote"]["Bid"]
         console.log(price);
         res.send(price);
-    })  
+    })
 })
 
 app.post('/addEtfToAccount/:etf', function(req, res) {
@@ -230,5 +236,3 @@ app.post('/addEtfToAccount/:etf', function(req, res) {
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
-
-
