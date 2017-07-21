@@ -1,4 +1,4 @@
-<html>]
+<html>
 <head>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.css">
@@ -30,8 +30,8 @@
 <body>
 <h1>Balance</h1>
 <h2>89.37</h2>
-<center><img src="beer1.jpg" alt="beer1.jpg" align="middle" style="width:304px;height:228px;"></center>
-<canvas id="myChart" width="400" height="400"></canvas>
+<center><img src="beer1.jpg" alt="beer1.jpg" align="middle" style="width:259px;height:178px;"></center>
+<canvas id="myChart" style = "width: 90px; height: 50px;"></canvas>
 <div>
     <button class="ui pink basic button">1D</button>
     <button class="ui pink basic button">1W</button>
@@ -39,7 +39,7 @@
     <button class="ui pink basic button">1Y</button>
 </div>
 <div class="ui segment">
-    <a href="ETFList.html"><button class="ui pink button">+</button></a>
+    <a href="ETFList.html"><button class="ui pink button" style = "width: 90px; height: 50px;""></span></button></a>
 </div>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.js"></script>
@@ -50,7 +50,7 @@
         data: {
             labels: ["23-Jun", "26-Jun", "30-Jun", "3-Jul", "7-Jul", "10-Jul", "14-Jul", "17-Jul"],
             datasets: [{
-                label: 'Beer Price',
+                label: 'Investment Value',
                 data: [266.79, 266.89, 264.51, 264.74, 264.3, 264.69, 268.15, 268.11],
                 borderColor: [
                     'rgba(255,99,132,1)',

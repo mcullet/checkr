@@ -8,7 +8,7 @@ var myChart = new Chart(ctx, {
     data: {
         labels: ["23-Jun", "26-Jun", "30-Jun", "3-Jul", "7-Jul", "10-Jul", "14-Jul", "17-Jul", "21-Jul"],
         datasets: [{
-            label: 'Beer Price',
+            label: 'Investment Value',
             data: [96.36, 96.63, 96.56, 97.19, 96.54, 96.68, 97.53, 97.52],
             borderColor: [
                 'rgba(255,99,132,1)',
@@ -17,6 +17,7 @@ var myChart = new Chart(ctx, {
         }]
     },
     options: {
+        responsive: true,
         scales: {
             yAxes: [{
                 ticks: {
