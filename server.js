@@ -84,6 +84,11 @@ var etfs = [{
 
 
 //console.log(sentiment("Great food. But it is way too expensive to eat there. I know we are far from the ocean and food cost is at a premium. but the reason I infrequently go back is the cost. it is nice to have that option in our neighborhood. College Park Maryland is that much more diverse and palate exciting the presence of fishnet."));
+app.get('/', function(req, res) {
+    res.sendFile('/public/FINRAHackathonHTMLComponent.html', {
+  root: __dirname
+  });
+}) 
 
 app.post('/saveAccount', function(req, res) {
     console.log(req.body)
@@ -129,10 +134,11 @@ app.get('/loadBalance', function(req, res) {
 app.get('/getEtf/:etf', function(req, res) {
     console.log(req.params.etf)
     var etf = req.params.etf
-    var price = response.body["query"]["results"]["quote"]["Bid"]
+    
     unirest.get('https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(" ' + etf + '")&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=')
     .end(function (response) {
         //console.log(response.body);
+        var price = response.body["query"]["results"]["quote"]["Bid"]
         console.log(price);
         res.send(price);
     })  
