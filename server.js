@@ -79,6 +79,75 @@ var etfs = [{
         "name": "VEA",
         "description": "Weighted average of large stocks from foreign stocks"
     },
+        { 
+        "name" : "SDS", 
+        "description" : "inverse leverage ETF for the S&P 500. -2 times the daily performance of the S&P 500 " 
+    }, 
+     { 
+        "name" : "TQQQ", 
+        "description" : "3X leveraged ETF comprised of weighted NASDAQ top 100 stocks" 
+    }, 
+    { 
+        "name" : "DOG", 
+        "description" : "Inverse exposure into the DOW Jones top 30 " 
+    }, 
+    { 
+        "name" : "SH", 
+        "description" : "Inverse exposure into the S&P 500" 
+    }, 
+    { 
+        "name" : "STZ", 
+        "description" : "Beer, Wine, and Spirits ETF" 
+    }, 
+    { 
+        "name" : "UUP", 
+        "description" : "Futures on the USD relative to world currencies" 
+    }, 
+    { 
+        "name" : "COW", 
+        "description" : "Futures based off of animal livestock" 
+    }, 
+    { 
+        "name" : "GLD", 
+        "description" : "Tracks gold prices by using gold bars hidden away in London vaults" 
+    }, 
+    { 
+        "name" : "USO", 
+        "description" : "Futures based on monthly WTI prices on oil" 
+    },
+    { 
+        "name" : "RSX", 
+        "description" : "weighted Russian companies based on market cap " 
+    }, 
+    { 
+        "name" : "IEV", 
+        "description" : "weighted 350 largest EU companies" 
+    }, 
+    { 
+        "name" : "FXI", 
+        "description" : "50 largest and most liquid Chinese stocks" 
+    }, 
+    { 
+        "name" : "XLRE", 
+        "description" : "market cap weighted index of real estate based stocks from the S&P 500" 
+    }, 
+    { 
+        "name" : "XLB", 
+        "description" : " market cap weighted index of materials based stocks from the S&P 500" 
+    }, 
+    { 
+        "name" : "XLI", 
+        "description" : " market cap weighted index of industrial based stocks from the S&P 500" 
+    }, 
+    { 
+        "name" : "XLV", 
+        "description" : " market cap weighted index of healthcare based stocks from the S&P 500" 
+    }, 
+    { 
+        "name" : "XLY", 
+        "description" : " market cap weighted index of consumer discretionary stocks like appliances and auto and apparel based stocks from the S&P 500" 
+    }, 
+
 ]    
 
 
@@ -111,6 +180,10 @@ app.get('/loadAccount', function(req, res) {
     });
     
 
+})
+
+app.get('/getAllEtfs', function(req, res) {
+    res.send(etfs);
 })
 
 app.get('/loadBalance', function(req, res) {
