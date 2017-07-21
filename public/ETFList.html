@@ -5,12 +5,13 @@
     <title>Title</title>
 
     <link rel="stylesheet" href="ETFList.css" type="text/css" />
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
 </head>
 <body>
 <h1>ETF List</h1>
 <div class="ui inverted segment">
-    <div class="ui inverted relaxed divided list">
-        <div class="item">
+    <div id="holder" class="ui inverted relaxed divided list">
+        <!-- <div class="item">
             <div class="content">
                 <div class="header">USMV</div>
                 An excellent companion
@@ -29,11 +30,11 @@
                 <div class="header">VTV</div>
                 He's also a dog
             </div>
-        </div>
+        </div> -->
 
     </div>
 </div>
-<div class="ui modal">
+<!-- <div class="ui modal">
     <i class="close icon"></i>
     <div class="header">
         Profile Picture
@@ -57,6 +58,21 @@
             <i class="checkmark icon"></i>
         </div>
     </div>
-</div>
+</div> -->
 </body>
+<script>
+
+$.ajax({
+  type: 'GET',
+  url: '/getAllEtfs',
+  success: function(resultData) {
+    var data = "";
+    for (var i = 0; i < resultData.length; i++) {
+      data += '<div class="item">  <div class="content"> <div class="header">' + resultData[i].name + '</div>' + resultData[i].description + '</div></div><hr>'
+    }
+    $('#holder').html(data)
+  }
+});
+
+</script>
 </html>

@@ -165,6 +165,12 @@ app.get('/myETFs', function(req, res) {
   });
 }) 
 
+app.get('/ETFList', function(req, res) {
+    res.sendFile('/public/ETFList.html', {
+  root: __dirname
+  });
+})
+
 app.post('/saveAccount', function(req, res) {
     console.log(req.body)
     fs.writeFile('accountData.json', JSON.stringify(req.body), function (err) {
