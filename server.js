@@ -180,7 +180,7 @@ app.get('/myETFs', function(req, res) {
 }) 
 
 app.get('/ETFList', function(req, res) {
-    res.sendFile('/public/ETFList.html', {
+    res.sendFile('/public/etflist', {
   root: __dirname
   });
 })
