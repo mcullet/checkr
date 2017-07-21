@@ -1,0 +1,22 @@
+body {
+    background-color: white;
+}
+
+h1 {
+    color: deeppink;
+    font-size: 50px;
+    font-family: "Courier New";
+    text-align: center;
+}
+
+.header {
+    color: limegreen;
+    font-size: 32px;
+    font-family: "Courier New";
+}
+
+.content {
+    color: black;
+    font-size: 26px;
+    font-family: "Courier New";
+}
