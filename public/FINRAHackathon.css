@@ -2,6 +2,10 @@ body {
     background-color: black;
 }
 
-.button button-positive button {
-    border-radius: 16px;
+.positivebutton {
+    position: absolute;
+    border-radius: 32px;
+    border-radius:50px 50px 50px 50px;
+    top: 112.5%;
+    left: 49.3%;
 }
