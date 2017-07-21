@@ -155,9 +155,23 @@ var etfs = [{
 //console.log(sentiment("Great food. But it is way too expensive to eat there. I know we are far from the ocean and food cost is at a premium. but the reason I infrequently go back is the cost. it is nice to have that option in our neighborhood. College Park Maryland is that much more diverse and palate exciting the presence of fishnet."));
 app.get('/', function(req, res) {
     res.sendFile('/public/FINRAHackathonHTMLComponent.html', {
-  root: __dirname
-  });
-}) 
+        root: __dirname
+    });
+})
+
+app.get('/ETFList.css', function(req, res) {
+    res.sendFile('/public/ETFList.css', {
+        root: __dirname
+    });
+})
+
+app.get('/MyETFs.css', function(req, res) {
+    res.sendFile('/public//MyETFs.css', {
+        root: __dirname
+    });
+})
+
+
 
 app.get('/myETFs', function(req, res) {
     res.sendFile('/public/MyETFs.html', {
