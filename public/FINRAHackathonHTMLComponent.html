@@ -30,49 +30,7 @@
 <body>
     <h1>Balance</h1>
     <h2>1.5 beer(s)</h2>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+    <canvas id="myChart" width="400" height="400"></canvas>
     <div>
         <button class="ui pink basic button">1D</button>
         <button class="ui pink basic button">1W</button>
@@ -81,4 +39,32 @@
     </div>
     <button style="border-radius:50px 50px 50px 50px;" class="button button-positive button"  ion-button round="">+</button>
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.js"></script>
+<script>
+var ctx = document.getElementById("myChart").getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: ["23-Jun", "26-Jun", "30-Jun", "3-Jul", "7-Jul", "10-Jul", "14-Jul", "17-Jul", "21-Jul"],
+        datasets: [{
+            label: 'Beer Price',
+            data: [266.79, 266.89, 264.51, 264.74, 264.3, 264.69, 268.15, 268.11],
+            borderColor: [
+                'rgba(255,99,132,1)',
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        showLine: true,
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:false
+                }
+            }]
+        }
+    }
+});
+</script>
 </html>
